@@ -1,11 +1,29 @@
-// import mongoose from "mongoose";
+import mongoose from "mongoose";
+ 
+const ImageSchema = new mongoose.Schema({
+    menus :[
+        {
+            name : {type : String, required: true},
+            item : [
+                {
+                    type: mongoose.Types.ObjectId,
+                    ref : "foods"
+                }
+            ]
+        }
+    ],
+    recommended : [
+        {
+            type : mongoose.Types.ObjectId,
+            ref : "foods",
+            unique : true
+        }
+    ]
+},
+    {
+        timestamps:true
+    }
 
-// const MenuSchema = new mongoose.Schema({
-    
-// },{
-//     timestamps: true
-// }
+)
 
-// )
-
-// export const MenuModel = mongoose.model("Menus", MenuSchema);
+export const ImageModel = mongoose.model("images",ImageSchema);
