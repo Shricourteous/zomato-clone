@@ -1,14 +1,17 @@
 import mongoose from "mongoose";
  
 const ImageSchema = new mongoose.Schema({
-    images : [
+    menus :[
         {
-            location : {
-                type : String,
-                required : true
-            }
+            name : {type : String, required: true},
+            item : [
+                {
+                    type: mongoose.Types.ObjectId,
+                    ref : "foods"
+                }
+            ]
         }
-    ]
+    ] 
 },
     {
         timestamps:true
