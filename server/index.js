@@ -1,15 +1,29 @@
 import express from "express";
 import dotenv from 'dotenv';
-import Auth from "./api/auth"
+import session from "express-session";
 // Database connection
+import passport from "passport";
 import ConnectDB from './database/connection'
+
+// Private Route Authentication
+import privateRouteConfig  from "./config/route.config"
+
+import Auth from "./api/auth"
+import Food from './api/food'
+import Restaurant from "./api/restaurant"
+import User from "./api/user"
+
 
 dotenv.config();
 
 const zomato = express();
 
-zomato.use(express.json());
+privateRouteConfig(passport);
 
+zomato.use(express.json());
+zomato.use(session({secret : "ZomatoApp"}));
+zomato.use(passport.initialize());
+zomato.use(passport.session());
 zomato.get("/",(req, res)=>{
     res.json({
         "message" : "Server is running"
@@ -17,7 +31,12 @@ zomato.get("/",(req, res)=>{
 });
 
 // /auth/signup
-zomato.use("/auth", Auth)
+zomato.use("/auth", Auth);
+zomato.use('/food', Food);
+zomato.use('/restaurant', Restaurant);
+zomato.use('/user',passport.authenticate("jwt", {session:false}), User);
+
+
 
 const PORT = 4000;
 

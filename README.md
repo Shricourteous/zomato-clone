@@ -36,7 +36,6 @@ This project is to explore the basic outline of Zomato Web App.
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`API_KEY`
+`MONGO_URL`
 
-`ANOTHER_API_KEY`
 

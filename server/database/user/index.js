@@ -13,12 +13,10 @@ const UserSchema = new mongoose.Schema({
     },
     password: {
         type : String,
-        required : true
     },
     address: [{
         detail:
-        {type : String,
-        required : true},
+        {type : String},
         for : {type: String}
     }],
     phoneNumber: [{type: Number}]     
@@ -32,7 +30,8 @@ const UserSchema = new mongoose.Schema({
 
 
 // attachments //signing or creating of tokens
-// const secretKey = "ZomatoAppKey";
+// jwt.sign(data, key) //key used to decrypt  token
+// const secretKey = "ZomatoApp";
 UserSchema.methods.genrateJwtToken = function (){
     return jwt.sign({user: this._id.toString()}, "ZomatoApp");
 };
