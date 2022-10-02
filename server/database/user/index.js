@@ -40,6 +40,7 @@ UserSchema.methods.genrateJwtToken = function (){
 
 // helperFunction
 UserSchema.statics.findEmailAndPhoneno = async ({email, phoneNumber})=>{
+
     const findUserByEmail = await UserModel.findOne({email});
     const findUserByPhoneno = await UserModel.findOne({phoneNumber});
 
@@ -51,10 +52,13 @@ UserSchema.statics.findEmailAndPhoneno = async ({email, phoneNumber})=>{
 
 UserSchema.statics.findEmailAndPassword = async ({email, password})=>{
     const user = await UserModel.findOne({email})
-    if (!email) throw new Error ("User Not existed");
+    if (!user) {
+        throw new Error ("User Not existed")
+    
+    };
 
     // password Comparison (string, hash-code)
-    const doesPassMatch = bcrypt.compare(password, user.password);
+    const doesPassMatch = await bcrypt.compare(password, user.password);
     if(!doesPassMatch){
         throw new Error("Invalid Credentials");
     }
@@ -72,6 +76,8 @@ UserSchema.pre('save', function(next){
         if(error) return next(error);
         // hash the password
         bcrypt.hash(user.password, salt ,(error, hash)=>{
+            if (error) return next(error);
+
             // assigning hashed password
             user.password = hash;
             return next();

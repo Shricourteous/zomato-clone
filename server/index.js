@@ -27,7 +27,7 @@ zomato.listen(PORT,()=>{
         console.log("Sever started running");
     })
     .catch((err)=>{
-        console.log("error")
+        console.log(err, "\nDB CONN ERR")
     })
 
 });
