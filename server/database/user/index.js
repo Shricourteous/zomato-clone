@@ -31,9 +31,8 @@ const UserSchema = new mongoose.Schema({
 
 // attachments //signing or creating of tokens
 // jwt.sign(data, key) //key used to decrypt  token
-// const secretKey = "ZomatoApp";
 UserSchema.methods.genrateJwtToken = function (){
-    return jwt.sign({user: this._id.toString()}, "ZomatoApp");
+    return jwt.sign({user: this._id.toString()}, process.env.JWT_SECRET);
 };
     
 

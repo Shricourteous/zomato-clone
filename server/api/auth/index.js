@@ -4,6 +4,16 @@ import { UserModel } from "../../database/user";
 
 const Router = express.Router();
 
+
+/**
+ * Absolute Route : /signup
+ * DEsc : Create a new account
+ * params : None
+ * method Post
+ * access public
+ * 
+ */
+
 Router.post("/signup", async (req, res)=>{
     try{
 
@@ -22,6 +32,15 @@ Router.post("/signup", async (req, res)=>{
 
 
 })
+
+/**
+ * Absolute Route : /signin
+ * DEsc : Login to existing account
+ * params : None
+ * method Post
+ * access public
+ * 
+ */
 Router.post("/signin", async (req, res)=>{
 
     try{
