@@ -30,20 +30,22 @@
  * 
  */
 --------------------------------------------------------------------------------
-**Notes**
+# **Notes**
 ## Authentication
 ### Code : 
-` Router.get('/', passport.authenticate("jwt", {session:true}),async (req, res)=>{
-    try {
-        const {user} = req
-        const _id = user._id
-    } catch (error) {
-        return res.status(500).json({error: error.message})
-    }
-}) `
+
+` Router.get('/', passport.authenticate("jwt", {session:true}),async (req, res)=>{`
+`    try {`
+`        const {user} = req`
+`        const _id = user._id`
+`    } catch (error) {`
+`        return res.status(500).json({error: error.message})`
+`    }`
+`}) `
 >"passport.authenticate" - decodes data
 >additional params can be taken from req.user and its named when generate JWT token (refer \server\database\user\index.js :line 34) 
 
+----------
 ## sorting In mongoDB
 ### Code :
 `const reviews = ReviewModel.find({restaurant:resId}).sort({createdAt : -1});`
