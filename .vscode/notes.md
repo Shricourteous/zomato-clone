@@ -1,6 +1,7 @@
 # ROUTES NEED TO BE TESTED IN POSTMAN (AFTER DB UPDATES)
 ## api/menu
 1. [GET MENU BASED ON ID] ({{baseUrl}}/menu/list/[MENU_ID]) 
+
 /**
  * Absolute Route : /list
  * DEsc : get List of menu by restaurant ID
@@ -9,6 +10,7 @@
  * access public
  * 
  */
+
 2. [GET MENU IMAGES]({{baseUrl}}/menu/image/[MENU_IMAGE_ID])
 /**
  * Absolute Route : /image
@@ -29,17 +31,20 @@
  */
 --------------------------------------------------------------------------------
 **Notes**
-
-## Code : 
-`Router.get('/', passport.authenticate("jwt", {session:true}),async (req, res)=>{
+## Authentication
+### Code : 
+` Router.get('/', passport.authenticate("jwt", {session:true}),async (req, res)=>{
     try {
         const {user} = req
         const _id = user._id
     } catch (error) {
         return res.status(500).json({error: error.message})
     }
-})
-`
+}) `
 >"passport.authenticate" - decodes data
 >additional params can be taken from req.user and its named when generate JWT token (refer \server\database\user\index.js :line 34) 
+
+## sorting In mongoDB
+### Code :
+`const reviews = ReviewModel.find({restaurant:resId}).sort({createdAt : -1});`
 
