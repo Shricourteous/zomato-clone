@@ -37,6 +37,7 @@ Router.put("/new", passport.authenticate("jwt", {session: false}, async(req, res
     try {
         const {user}= req;
         const {orderDetails} = req.body;
+        // VALIDATE ORDER DETAILS
         const addNewOrder = await OrderModel.findOneAndUpdate(
             {user : user._id}, {$push:{ordersDetails:orderDetails}}, {new: true}
             );

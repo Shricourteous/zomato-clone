@@ -41,7 +41,7 @@ zomato.use('/restaurant', Restaurant);
 zomato.use('/user', User);
 zomato.use('/menu', Menu);
 zomato.use('/order',Order);
-zomato.use('/reviews', Review);
+zomato.use('/review', Review);
 
 
 const PORT = 4000;

@@ -29,8 +29,16 @@
  * access private
  * 
  */
+
+1. VALIDATE UPDATE ORDER
+2. VALIDATE USER DATA
+
+
 --------------------------------------------------------------------------------
 # **Notes**
+## JOI (MIDDLEWARE VALIDATION)
+>used to check or validate in order avoid attackers
+
 ## Authentication
 ### Code : 
 
@@ -49,4 +57,18 @@
 ## sorting In mongoDB
 ### Code :
 `const reviews = ReviewModel.find({restaurant:resId}).sort({createdAt : -1});`
+
+# COMMON ERRORS 
+
+`{`
+`    "error": "Converting circular structure to JSON\n    --> starting at object with` `constructor 'MongoClient'\n    |     property 's' -> object with constructor` `'Object'\n    |     property 'sessionPool' -> object with constructor` `'ServerSessionPool'\n    --- property 'client' closes the circle"`
+`}`
+
+>REASON IS CODE RANS before the data recieves by the
+>particular var... Tip: add "await" before the specific function
+
+
+
+
+
 
