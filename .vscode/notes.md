@@ -1,5 +1,5 @@
 # ROUTES NEED TO BE TESTED IN POSTMAN (AFTER DB UPDATES)
-## api/menu
+## api/menu  **DONE**
 1. [GET MENU BASED ON ID] ({{baseUrl}}/menu/list/[MENU_ID]) 
 
 /**
