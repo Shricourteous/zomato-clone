@@ -17,7 +17,7 @@ import User from "./api/user"
 import Menu from "./api/menu"
 import Order from './api/order'
 import Review from './api/reviews'
-
+import Image from './api/image'
 
 dotenv.config();
 
@@ -31,6 +31,7 @@ zomato.use(express.json());
 zomato.use(session({secret : process.env.JWT_SECRET}));
 zomato.use(passport.initialize());
 zomato.use(passport.session());
+
 zomato.get("/",(req, res)=>{
     res.json({
         "message" : "Server is running"
@@ -45,6 +46,7 @@ zomato.use('/user', User);
 zomato.use('/menu', Menu);
 zomato.use('/order',Order);
 zomato.use('/review', Review);
+zomato.use('/image', Image);
 
 
 const PORT = 4000;

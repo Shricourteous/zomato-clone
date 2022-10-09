@@ -34,13 +34,31 @@ Router.post("/:_id", async(req, res)=>{
  * params : _id 
  * method post
  * access public
+ * upload.single('file') // file is the name of the key in body of api
+ * uploadImage return details from aws
  */
 
-Router.post("/", upload.single('file'), async(reqq, res)=>{
+Router.post("/", upload.single('file'), async(req, res)=>{
     try {
         const file = req.file; 
-    } catch (error) {
+        const bucketOption = {
+            Bucket : "zomato-clone-5040",
+            Key : file.originalname,
+            Body : file.buffer, //Heavy file store in temp while uploading
+            ContentType: file.memetype,
+            ACL : "public-read" 
+        };
+        const uploadImage = await s3Upload(bucketOption);
+
+        const dbLoc = await ImageModel.create({
+            images: [ {
+                location: uploadImage.Location
+            }]
+        })
+        return res.status(200).json({dbLoc})
         
+    } catch (error) {
+        return res.status(500).json({message : error.message})
     }
 })
 
