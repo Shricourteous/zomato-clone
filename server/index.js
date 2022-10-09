@@ -7,6 +7,7 @@ import ConnectDB from './database/connection'
 
 // Private Route Authentication
 import privateRouteConfig  from "./config/route.config"
+import googleAuthConfig from './config/google.config'
 
 // Importing APIs
 import Auth from "./api/auth"
@@ -23,6 +24,8 @@ dotenv.config();
 const zomato = express();
 
 privateRouteConfig(passport);
+googleAuthConfig(passport);
+
 
 zomato.use(express.json());
 zomato.use(session({secret : process.env.JWT_SECRET}));
