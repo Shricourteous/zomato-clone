@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 // import Navbar from '../components/Navbar'
 // import FootTab from '../components/FootTab';
+import HomeLayout from '../layouts/Home.layout'
 
 
 const Home = () => {
@@ -8,11 +9,12 @@ const Home = () => {
     <>
     {/* <Navbar />
     <FootTab /> */}
-        <div className='container mx-auto px-4 lg:px-20'>
-          <Component {...props} />
-        </div>
+        {/* <div className='container mx-auto px-4 lg:px-20'> */}
+          {/* <Component {...props} /> */}
+        {/* </div> */}
+        <h2>Home</h2>
     </>
   )
 }
 
-export default Home;
+export default HomeLayout(Home);

@@ -19,11 +19,13 @@ function App() {
     <Route path='/:type' element={<HomePage/>} />
     <Route path='/google/:token' element={<GoogleAuth/>} />
     {/* <Route path='/restaurant/:id' element={<RedirectRestaurant/>} /> */}
-    <Route path='/restaurant/:id/overview' element={<Overview/>} />
-    <Route path='/restaurant/:id/order-online' element={<OrdersOnline/>} />
-    <Route path='/restaurant/:id/review' element={<Reviews/>} />
-    <Route path='/restaurant/:id/menu' element={<Menu/>} />
-    <Route path='/restaurant/:id/photos' element={<Photo/>} />
+    <Route path='/restaurant/:id' element={<Restaurant />} >
+      <Route path='overview' element={<Overview/>} />
+      <Route path='order-online' element={<OrdersOnline/>} />
+      <Route path='review' element={<Reviews/>} />
+      <Route path='menu' element={<Menu/>} />
+      <Route path='photos' element={<Photo/>} />
+    </Route>
     <Route path='/checkout/orders' element={<Checkout/>} />
   
   
