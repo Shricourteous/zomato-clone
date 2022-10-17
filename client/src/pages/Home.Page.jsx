@@ -1,10 +1,8 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
-// import FootTab from '../components/FootTab';
 import HomeLayout from '../layouts/Home.layout'
 import { useParams } from 'react-router-dom'
 
-// Import table
+// Import componenets
 import Dining from '../components/Dining'
 import NightLife from '../components/NightLife'
 import Nutrition from '../components/Nutrition'
@@ -15,7 +13,7 @@ const Home = () => {
 
   return (
     <>
-      <div className='my-5'>
+      <div className='my-5 mb-20 lg:mb-0 md:mb-10'>
         {type === 'delivery' && <Delivery/>}
         {type === 'dining' && <Dining/>}
         {type === 'nutri' && <Nutrition/>}

@@ -33,7 +33,7 @@ const MobileTab = () => {
 
   return (
     <>
-      <div className="lg:hidden flex shadow-lg fixed bottom-0 z-10 w-full items-center justify-between md:justify-evenly text-gray-500 border">
+      <div className="lg:hidden bg-white flex shadow-lg fixed bottom-0 z-10 w-full items-center justify-between md:justify-evenly text-gray-500 border">
         {allTypes.map((eachItem) => (
           <Link key={eachItem.id} to={`/${eachItem.id}`} className="w-1/4">
             <div

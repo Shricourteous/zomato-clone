@@ -80,15 +80,15 @@ const DeliveryCarousel = () => {
         Inspiration for your First Order!!
       </h1>
       <div className='lg:hidden grid gap-3 grid-cols-3 md:grid-cols-4 justify-center'>
-        {categories.map((food)=>(
-          <DeliveryCategoryCard {...food}/>
+        {categories.map((food, index)=>(
+          <DeliveryCategoryCard {...food} key={index}/>
         ))}
       </div>
       <div className='hidden lg:block'>
           <Swiper {...slideConfig}>
-            {categories.map((food)=>(
+            {categories.map((food, index)=>(
               <SwiperSlide>
-                <DeliveryCategoryCard {...food}/>
+                <DeliveryCategoryCard key={index} {...food}/>
               </SwiperSlide>
             ))}
           </Swiper>

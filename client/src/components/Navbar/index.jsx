@@ -6,11 +6,12 @@ import { RiSearch2Line } from "react-icons/ri";
 
 const MobNavbar = ({ user, isDropDownOpen, setIsDropDownOpen }) => {
   return (
-    <div className="w-full flex items-center justify-between container m-auto lg:hidden py-2">
+    <div className="w-full flex items-center justify-between lg:hidden">
       <div className="w-28">
         <img
           src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png"
           alt="Logo"
+          className="w-full h-full"
         />
       </div>
       <div className="flex items-center gap-3 relative">
@@ -89,9 +90,6 @@ const LargeNav = ({ user, isDropDownOpen, setIsDropDownOpen }) => {
         </div>
       </div>
       <div className="flex items-center gap-3 relative">
-        {/* <button className=" bg-black text-black px-3 py-2 rounded-full">
-          Use App
-        </button> */}
         {user?.fullName ? (
           <>
             <div
