@@ -74,7 +74,7 @@
 >the "package.json" has to update follwing things
 1. UPDATE THE SCRIPT
 
-in build command:
+in build `command:
     "babel index.js -d dist" --> "babel ./mainFolderName -d dist"
     "dev":"nodemon --exec babel-node index.js"-->"dev": "nodemon --exec babel-node ./src/index.js"
 
