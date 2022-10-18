@@ -96,17 +96,4 @@ const DeliveryCarousel = () => {
     </>
   )
 }
-
 export default DeliveryCarousel
-
-
-
-
-
-
-
-
-
-
-
-
