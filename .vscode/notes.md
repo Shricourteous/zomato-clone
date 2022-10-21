@@ -79,4 +79,5 @@ in build `command:
     "dev":"nodemon --exec babel-node index.js"-->"dev": "nodemon --exec babel-node ./src/index.js"
 
 2. second
+3. FrmerMotion GSAP
 
