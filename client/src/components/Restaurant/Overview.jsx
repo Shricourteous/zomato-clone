@@ -39,7 +39,7 @@ const Overview = () => {
   ]);
   const [reviews, setReviews] = useState([
     {
-      rating: 3.5,
+      rating: 3.0,
       isRestaurantReview: false,
       createdAt: 'Fri Oct 14 2022 20:20:34 GMT+0530 (India Standard Time)',
       reviewText: 'Very bad experience.',
@@ -47,9 +47,9 @@ const Overview = () => {
     {
       rating: 4.5,
       isRestaurantReview: false,
-      createdAt: 'Fri Oct 14 2022 20:19:34 GMT+0530 (India Standard Time)',
+      createdAt: 'Fri Oct 16 2022 20:20:34 GMT+0530 (India Standard Time)',
       reviewText: 'Very good experience.',
-    },
+    }
   ]);
 
   const { id } = useParams();
@@ -126,15 +126,8 @@ const Overview = () => {
           <div className='flex flex-col-reverse'>
             <div className='my-4'>
               <h4 className='text-lg font-medium'>
-                {' '}
-                Rate your Delivery Experiencw
+                {restaurant.name} Reviews
               </h4>
-              <ReactStars
-                count={5}
-                onChange={(newRating) => newRating}
-                size={24}
-                activeColor='#ffd700'
-              />
               {reviews.map((review, index) => (
                 <ReviewCard {...review} key={index} />
               ))}
