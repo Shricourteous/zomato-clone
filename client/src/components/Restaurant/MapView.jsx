@@ -15,7 +15,7 @@ const MapView = (props) => {
       <div>
         <h4 className='text-xl'>Direction</h4>
         <div className='w-full h-48'>
-        <MapContainer center={props.mapLocation} zoom={13} scrollWheelZoom={false}>
+        <MapContainer center={props.mapLocation} zoom={13} className='h-full' scrollWheelZoom={false}>
     <TileLayer
       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -33,7 +33,7 @@ const MapView = (props) => {
           <MdContentCopy/> Copy
         </button>
         <button className='flex items-center gap-3 px-3 py-2 text-gray-700 border border-gray-400 rounded-lg'>
-          <span className='text-zomato-400'>
+          <span className='flex items-center gap-3 text-zomato-400'>
             <FaDirections/> Direction
           </span>
         </button>

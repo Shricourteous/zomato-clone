@@ -161,7 +161,7 @@ const Overview = () => {
             <MapView
               title="McDonald's"
               phno="+193423542345"
-              mapLocation={getLatLong("28.64121406271755, 77.21955482132051")}
+              mapLocation={getLatLong("38.64121406271755, 80.21955482132051")}
               address="H-5/6, Plaza Building, Connaught Place, New Delhi"
             />
             </div>
