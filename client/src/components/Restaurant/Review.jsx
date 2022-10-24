@@ -27,7 +27,7 @@ const Review = () => {
   return (
     <div className='flex flex-col gap-5 md:flex md:flex-row relative w-full h-full'>
       <div className='w-full flex flex-col md:w-8/12 gap-3'>
-        <div className='md:hidden mb-4'>
+        <div className='md:hidden mb-4 flex flex-col gap-1'>
           <AddReviewCard/>
         </div>
           {

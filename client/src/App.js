@@ -8,7 +8,7 @@ import HomePage from './pages/Home.Page';
 import Restaurant from './pages/Restaurant.page';
 import OrdersOnline from './components/Restaurant/OrderOnline';
 import Menu from './components/Restaurant/Menu';
-import Photo from './components/Restaurant/Photo';
+import Photo from './components/Restaurant/Photos';
 import Reviews from './components/Restaurant/Review';
 import Overview from './components/Restaurant/Overview';
 import RestaurantLayout from './layouts/Restaurant.layout';
