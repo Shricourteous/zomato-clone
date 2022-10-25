@@ -67,7 +67,10 @@
 >REASON IS CODE RANS before the data recieves by the
 >particular var... Tip: add "await" before the specific function
 
+[ ] ctrl L
+ctrl *i*
 
+[ref](https://github.com/aditya12gusain/zomato-clone-10567/blob/day-20/client/src/components/Restaurant/OrderOnline.jsx)
 
 ----------
 **Reallocating the server into one dir**
