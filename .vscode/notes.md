@@ -69,7 +69,7 @@
 
 [ ] ctrl L
 ctrl *i*
-
+~
 [ref](https://github.com/aditya12gusain/zomato-clone-10567/blob/day-20/client/src/components/Restaurant/OrderOnline.jsx)
 
 ----------

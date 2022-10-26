@@ -1,10 +1,24 @@
 import React, { useState } from "react";
 import { FaUserAlt } from "react-icons/fa";
 import { HiLocationMarker } from "react-icons/hi";
-import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
+import { IoMdArrowDropdown } from "react-icons/io";
 import { RiSearch2Line } from "react-icons/ri";
 
-const MobNavbar = ({ user, isDropDownOpen, setIsDropDownOpen }) => {
+// Components
+import SignIn from '../Auth/SignIn'
+import SignUp from "../Auth/SignUp";
+
+const MobNavbar = ({ user, isDropDownOpen, setIsDropDownOpen, signIn, signUp }) => {
+  
+  const SignIn =()=>{
+    signIn()
+    setIsDropDownOpen(false)
+  }
+  const SignUp =()=>{
+    signUp()
+    setIsDropDownOpen(false)
+  }
+  
   return (
     <div className="w-full flex items-center justify-between lg:hidden">
       <div className="w-28">
@@ -46,8 +60,8 @@ const MobNavbar = ({ user, isDropDownOpen, setIsDropDownOpen }) => {
             </span>
             {isDropDownOpen && (
               <div className="absolute shadow-lg py-3 -bottom-24 -right-0 w-36 z-20 bg-white flex flex-col gap-2 border border-gray-200">
-                <button className="">Sign Out</button>
-                <button className="">Sign Up</button>
+                <button onClick={SignIn}>Sign In</button>
+                <button onClick={SignUp}>Sign Up</button>
               </div>
             )}
           </>
@@ -57,7 +71,17 @@ const MobNavbar = ({ user, isDropDownOpen, setIsDropDownOpen }) => {
   );
 };
 
-const LargeNav = ({ user, isDropDownOpen, setIsDropDownOpen }) => {
+const LargeNav = ({ user, isDropDownOpen, setIsDropDownOpen, signIn,signUp }) => {
+  
+  const SignIn =()=>{
+    signIn()
+    setIsDropDownOpen(false)
+  }
+  const SignUp =()=>{
+    signUp()
+    setIsDropDownOpen(false)
+  }
+  
   return (
     <div className="w-full items-center justify-between m-auto px-20 lg:flex hidden container mx-auto ">
       <div className="gap-4 justify-around w-full items-center flex">
@@ -114,12 +138,13 @@ const LargeNav = ({ user, isDropDownOpen, setIsDropDownOpen }) => {
               onClick={() => setIsDropDownOpen((prev) => !prev)}
               className="border p-2 border-gray-400 rounded-full"
             >
+            
               <FaUserAlt className="w-full h-full" />
             </span>
             {isDropDownOpen && (
               <div className="absolute shadow-lg py-3 -bottom-24 -right-0 w-36 z-20 bg-white flex flex-col gap-2 border border-gray-200">
-                <button className="">Sign Out</button>
-                <button className="">Sign Up</button>
+                <button onClick={SignIn}>Sign In</button>
+                <button onClick={SignUp}>Sign Up</button>
               </div>
             )}
           </>
@@ -130,22 +155,39 @@ const LargeNav = ({ user, isDropDownOpen, setIsDropDownOpen }) => {
 };
 
 const Navbar = () => {
+  
+  const [openSignin, setopenSignin] = useState(false)
+  const [openSignup, setopenSignup] = useState(false)
+  
+  const openSigninModal = () => setopenSignin(true)
+  const openSignupModal = () => setopenSignup(true)
+
+
   const user = {
-    fullName: "Shri",
+    // fullName: "Shri",
   };
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   return (
     <>
+
+  <SignIn isOpen={openSignin} setisOpen={setopenSignin}/> 
+  <SignUp isOpen={openSignup} setisOpen={setopenSignup}/> 
+
       <nav className="p-4 lg:py-2 flex bg-white shadow-md lg:shadow-none lg:border-b-2 border-gray-100 w-full items-center">
         <MobNavbar
           user={user}
           isDropDownOpen={isDropDownOpen}
           setIsDropDownOpen={setIsDropDownOpen}
+          signIn={openSigninModal}
+          signUp={openSignupModal}
+
         />
         <LargeNav
           user={user}
           isDropDownOpen={isDropDownOpen}
           setIsDropDownOpen={setIsDropDownOpen}
+          signIn={openSigninModal}
+          signUp={openSignupModal}
         />
       </nav>
     </>
