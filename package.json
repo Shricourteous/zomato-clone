@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "dayjs": "^1.11.6"
+    "dayjs": "^1.11.6",
+    "react-redux": "^8.0.4"
   }
 }

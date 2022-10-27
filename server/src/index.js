@@ -19,6 +19,10 @@ import Order from './api/order'
 import Review from './api/reviews'
 import Image from './api/image'
 
+// Middleware to operate Redux
+import cors from 'cors'
+import helmet from 'helmet'
+
 dotenv.config();
 
 const zomato = express();
@@ -26,6 +30,9 @@ const zomato = express();
 privateRouteConfig(passport);
 googleAuthConfig(passport);
 
+
+zomato.use(cors({origin : "http://localhost:3000"}))
+zomato.use(helmet())
 
 zomato.use(express.json());
 zomato.use(session({secret : process.env.JWT_SECRET}));

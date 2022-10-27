@@ -3,22 +3,22 @@ import axios from 'axios'
 // Redux Types
 import { SIGN_IN, SIGN_UP, SIGN_OUT, GOOGLE_AUTH } from './auth.type';
 
-export const sigIn = (userData) => async(dispatch) => {
+export const signIn = (userData) => async(dispatch) => {
   try {
     const User = await axios({
-      url:"http://localhost:4000/auth/signin",
       method: "POST",
-      data : {credentails : userData}
+      url:"http://localhost:4000/auth/signin",
+      data : {credentials : userData}
     })
     
     localStorage.setItem(
-      "Zomato App", JSON.stringify({tokens : User.data.tokens})
+      "zomatoUser", JSON.stringify({token : User.data.token })
     )
     
-    window.location.reload()
+    // window.location.reload()
     
-    return dispatch({type : SIGN_IN, payload : User.data})
+    return dispatch({ type : SIGN_IN , payload : User.data })
   } catch (error) {
-    return dispatch({type : "Error--> Auth Dispatch action", payload: error})
+    return dispatch({type : "Error", payload: error})
   }
 }

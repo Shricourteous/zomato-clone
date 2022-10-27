@@ -3,6 +3,11 @@ import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 
+
+// Redux
+import {signIn} from '../../redux/reducers/auth/auth.action'
+import {useDispatch} from 'react-redux'
+
 const SignIn = ({ isOpen, setisOpen }) => {
   const [userData, setuserData] = useState({
     email: '',
@@ -16,7 +21,10 @@ const SignIn = ({ isOpen, setisOpen }) => {
     setisOpen(false);
   };
 
+  const dispatch = useDispatch()
+
   const submit = () => {
+    dispatch(signIn(userData))
     closeModal();
     setuserData({ email: '', password: '' });
   };
