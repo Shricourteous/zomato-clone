@@ -84,3 +84,14 @@ in build `command:
 2. second
 3. FrmerMotion GSAP
 
+**REDUX**
+createstore - creates store
+thunk - console logs (track)
+
+**MAJOR THINGS IN REDUX TO FOLLOW**
+1. Type => initializes as variable
+2. Action => Brain Of App which sends to BackEnd from frontend and updates the reducer
+3. Reducer => Combines the chunks {usually}
+
+
+
