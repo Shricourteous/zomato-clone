@@ -13,7 +13,21 @@ import Reviews from './components/Restaurant/Review';
 import Overview from './components/Restaurant/Overview';
 import RestaurantLayout from './layouts/Restaurant.layout';
 
+// Redux
+import {useEffect} from 'react'
+import {useDispatch} from 'react-redux'
+import {mySelf} from './redux/reducers/User/user.action'
+
+
 function App() {
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(mySelf())
+  }, [localStorage])
+  
+
+
   return (
     <>
       <Routes>

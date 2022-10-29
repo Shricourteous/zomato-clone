@@ -95,3 +95,6 @@ thunk - console logs (track)
 
 
 
+<!-- BUGS -->
+Google sign not working properly
+signout does require reload

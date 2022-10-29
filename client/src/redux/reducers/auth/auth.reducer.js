@@ -17,8 +17,11 @@ const authReducer = (state = intialState, action)=>{
     case SIGN_OUT:
       return {};
        
-    // case GOOGLE_AUTH:
-  
+    case GOOGLE_AUTH:
+      return { 
+        ...state,
+        ...action.payload
+      }
     default:
       return {
         ...state

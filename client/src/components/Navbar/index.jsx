@@ -7,6 +7,12 @@ import { RiSearch2Line } from "react-icons/ri";
 // Components
 import SignIn from '../Auth/SignIn'
 import SignUp from "../Auth/SignUp";
+import { useNavigate } from "react-router-dom";
+
+// redux
+import { useSelector, useDispatch } from "react-redux";
+import {clearUser} from '../../redux/reducers/User/user.action'
+import {signOut} from  '../../redux/reducers/auth/auth.action'
 
 const MobNavbar = ({ user, isDropDownOpen, setIsDropDownOpen, signIn, signUp }) => {
   
@@ -18,7 +24,17 @@ const MobNavbar = ({ user, isDropDownOpen, setIsDropDownOpen, signIn, signUp }) 
     signUp()
     setIsDropDownOpen(false)
   }
-  
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const SignOut = () => {
+    dispatch(signOut())
+    dispatch(clearUser())
+    navigate('/delivery');
+    setIsDropDownOpen(false)
+    
+  }
+    
   return (
     <div className="w-full flex items-center justify-between lg:hidden">
       <div className="w-28">
@@ -32,7 +48,7 @@ const MobNavbar = ({ user, isDropDownOpen, setIsDropDownOpen, signIn, signUp }) 
         <button className="bg-zomato-400 text-white px-3 py-2 rounded-full">
           Use App
         </button>
-        {user?.fullName ? (
+        {user?.fullname ? (
           <>
             <div
               onClick={() => setIsDropDownOpen((prev) => !prev)}
@@ -46,7 +62,7 @@ const MobNavbar = ({ user, isDropDownOpen, setIsDropDownOpen, signIn, signUp }) 
             </div>
             {isDropDownOpen && (
               <div className="absolute shadow-lg py-3 -bottom-14 -right-0 w-36 z-20 bg-white flex flex-col gap-2 border border-gray-200">
-                <button className="">Sign Out</button>
+                <button onClick={SignOut}>Sign Out</button>
               </div>
             )}
           </>
@@ -79,6 +95,17 @@ const LargeNav = ({ user, isDropDownOpen, setIsDropDownOpen, signIn,signUp }) =>
   }
   const SignUp =()=>{
     signUp()
+    setIsDropDownOpen(false)
+  }
+
+
+  // REDUX
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const SignOut = () => {
+    dispatch(signOut())
+    dispatch(clearUser())
+    navigate('/delivery');
     setIsDropDownOpen(false)
   }
   
@@ -114,7 +141,7 @@ const LargeNav = ({ user, isDropDownOpen, setIsDropDownOpen, signIn,signUp }) =>
         </div>
       </div>
       <div className="flex items-center gap-3 relative">
-        {user?.fullName ? (
+        {user?.fullname ? (
           <>
             <div
               onClick={() => setIsDropDownOpen((prev) => !prev)}
@@ -128,7 +155,7 @@ const LargeNav = ({ user, isDropDownOpen, setIsDropDownOpen, signIn,signUp }) =>
             </div>
             {isDropDownOpen && (
               <div className="absolute shadow-lg py-3 -bottom-14 -right-0 w-36 z-20 bg-white flex flex-col gap-2 border border-gray-200">
-                <button className="">Sign Out</button>
+                <button onClick={SignOut}>Sign Out</button>
               </div>
             )}
           </>
@@ -163,9 +190,14 @@ const Navbar = () => {
   const openSignupModal = () => setopenSignup(true)
 
 
-  const user = {
-    // fullName: "Shri",
-  };
+  // const user = {
+  //   fullname: "Shri",
+  // };
+
+  // redux
+  const user =  useSelector((globalState ) => globalState.user)
+  
+
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   return (
     <>
