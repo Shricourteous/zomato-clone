@@ -19,7 +19,7 @@ const upload = multer({storage})
  * access public
  */
 
-Router.post("/:_id", async(req, res)=>{
+Router.get("/:_id", async(req, res)=>{
     try {
         const image =  await ImageModel.findById(req.params._id);
         return res.status(200).json({ image })

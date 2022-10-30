@@ -24,7 +24,7 @@ export const mySelf = (_id) => async (dispatch) => {
     return dispatch({type : SELF, payload: User.data.user})
 
   } catch (error) {
-    return dispatch({type : "ERROR GET USER", payload: error})
+    return dispatch({type : "ERROR GET Myself", payload: error})
   }
 }
 

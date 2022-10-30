@@ -72,8 +72,8 @@ const DiningCarousel = () => {
     <div className=''>
           <Swiper {...slideConfig}>
             {dining.map((item, index)=>(
-              <SwiperSlide>
-                <PictureCarouselCard key={index} {...item}/>
+              <SwiperSlide key={index}>
+                <PictureCarouselCard  {...item}/>
               </SwiperSlide>
             ))}
           </Swiper>

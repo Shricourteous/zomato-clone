@@ -1,59 +1,21 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 //components
 import DeliveryCrousel from './DeliveryCarousel';
 import RestaurantCards from '../RestaurantCard';
 
+
+// redux
+import {useSelector} from 'react-redux'
+
+
 const Delivery = () => {
-  const [restaurantList, setRestaurantList] = useState([
-    {
-      _id: "wjn4239jdk9",
-      isPro: true,
-      isOff: true,
-      name : "Cheeze Toma Pizza",
-      restaurantReviewValue : "4.0",
-      cuisine : [
-        "Mittai",
-        "SOuth Indian",
-        "Chinese",
-        "Japanese",
-        "NorthIndian",
-        "ChoFoods"
-      ],
-      averageCost: 459
-    },
-    {
-      _id: "wjn423f9jdk9",
-      isPro: true,
-      isOff: true,
-      name : "Toma Cheeze Pizza",
-      restaurantReviewValue : "4.2",
-      cuisine : [
-        "Mittai",
-        "South Indian",
-        "Chinese",
-        "Japanese",
-        "NorthIndian",
-        "ChoFoods"
-      ],
-      averageCost: 459
-    },
-    {
-      _id: "wjn423fe9jdk9",
-      isPro: true,
-      isOff: true,
-      name : "Toma Cheeze Pizza",
-      restaurantReviewValue : "4.4",
-      cuisine : [
-        "Mittai",
-        "South Indian",
-        "Chinese",
-        "Japanese",
-        "NorthIndian",
-        "ChoFoods"
-      ],
-      averageCost: 449
-    },
-  ]);
+
+  const [restaurantList, setRestaurantList] = useState([]);
+  const reduxState = useSelector((globalstate)=> globalstate.restaurant.restaurants)
+
+  useEffect(()=> {
+    reduxState && setRestaurantList(reduxState)
+  }, [reduxState])
   return (
     <>
       <DeliveryCrousel />
@@ -70,3 +32,53 @@ const Delivery = () => {
 };
 
 export default Delivery;
+
+// static codes for eg:
+// {
+//   _id: "wjn4239jdk9",
+//   isPro: true,
+//   isOff: true,
+//   name : "Cheeze Toma Pizza",
+//   restaurantReviewValue : "4.0",
+//   cuisine : [
+//     "Mittai",
+//     "SOuth Indian",
+//     "Chinese",
+//     "Japanese",
+//     "NorthIndian",
+//     "ChoFoods"
+//   ],
+//   averageCost: 459
+// },
+// {
+//   _id: "wjn423f9jdk9",
+//   isPro: true,
+//   isOff: true,
+//   name : "Toma Cheeze Pizza",
+//   restaurantReviewValue : "4.2",
+//   cuisine : [
+//     "Mittai",
+//     "South Indian",
+//     "Chinese",
+//     "Japanese",
+//     "NorthIndian",
+//     "ChoFoods"
+//   ],
+//   averageCost: 459
+// },
+// {
+//   _id: "wjn423fe9jdk9",
+//   isPro: true,
+//   isOff: true,
+//   name : "Toma Cheeze Pizza",
+//   restaurantReviewValue : "4.4",
+//   cuisine : [
+//     "Mittai",
+//     "South Indian",
+//     "Chinese",
+//     "Japanese",
+//     "NorthIndian",
+//     "ChoFoods"
+//   ],
+//   averageCost: 449
+// }, 

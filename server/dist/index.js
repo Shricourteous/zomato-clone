@@ -30,16 +30,25 @@ var _reviews = _interopRequireDefault(require("./api/reviews"));
 
 var _image = _interopRequireDefault(require("./api/image"));
 
+var _cors = _interopRequireDefault(require("cors"));
+
+var _helmet = _interopRequireDefault(require("helmet"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Database connection
 // Private Route Authentication
 // Importing APIs
+// Middleware to operate Redux
 _dotenv.default.config();
 
 const zomato = (0, _express.default)();
 (0, _route.default)(_passport.default);
 (0, _google.default)(_passport.default);
+zomato.use((0, _cors.default)({
+  origin: "http://localhost:3000"
+}));
+zomato.use((0, _helmet.default)());
 zomato.use(_express.default.json());
 zomato.use((0, _expressSession.default)({
   secret: process.env.JWT_SECRET

@@ -86,30 +86,32 @@ const CartContainer = () => {
   const closeCart= ()=> setisOpen(false)
   return(
     <>
-    {cart.length && (<>
-      {isOpen && (
-       <div className=' w-full overflow-y-scroll h-48 bg-white z-10 p-2 bottom-14 px-3 fixed'>
-          <div className='flex items-center justify-between md:px-20'>
-            <h3 className='text-xl font-semibold'>Your Order</h3>
-          <IoCloseSharp onClick={closeCart} className="z-20 cursor-pointer"/>
+      {cart.length && (
+        <>
+          {isOpen && (
+            <div className="w-full overflow-y-scroll h-48 bg-white z-20 p-2 bottom-14 px-3 fixed">
+              <div className="flex items-center justify-between md:px-20">
+                <h3 className="text-xl font-semibold">Your Orders</h3>
+                <IoCloseSharp onClick={closeCart} className="cursor-pointer" />
+              </div>
+
+              <hr className="my-2" />
+
+              <div className="flex flex-col gap-2 md:px-20">
+                {cart.map((food) => (
+                  <FoodItem key={food._id} {...food} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="fixed w-full bg-white z-10 p-2 px-3 bottom-0 mx-auto lg:px-20">
+            <CartData toggle={toggleCart} />
           </div>
-          <hr className='my-2' />
-          <div className='flex flex-col md:px-20 gap-2'>
-            {cart.map((food)=>(
-              <FoodItem key={food._id} {...food} />
-            ))}
-          </div>
-       </div> 
-       
-    )}
-    <div className=' fixed w-full bg-white z-10 p-2 px-3  bottom-0 mx-auto lg:px-20'>
-      <CartData toggle={toggleCart} />
-    </div>
-    </>)}
+        </>
+      )}
     </>
-
   )
-
 }
 
 export default CartContainer;
