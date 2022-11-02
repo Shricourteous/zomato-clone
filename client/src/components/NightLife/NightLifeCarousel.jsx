@@ -76,8 +76,8 @@ const NightLifeCarousel = () => {
     <div className=''>
       <Swiper {...slideConfig}>
         {restaurants.map((item, index) => (
-          <SwiperSlide>
-            <PictureCarouselCard key={index} {...item} />
+          <SwiperSlide key={index} >
+            <PictureCarouselCard {...item} />
           </SwiperSlide>
         ))}
       </Swiper>

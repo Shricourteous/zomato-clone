@@ -98,3 +98,30 @@ thunk - console logs (track)
 <!-- BUGS -->
 Google sign not working properly
 signout does require reload
+
+
+<!-- VIM COMMANDS -->
+i - insert
+esc - back to command
+:wq - quit & save
+dd - delete line
+ddd -  delete lines x3
+
+
+stackblitz
+githubcoidespaces
+fleet
+
+
+/Shricourteous:Shricourteous@cluster0.f8onjwc.mongodb.net/?retryWrites=true&w=majority
+/devtown:devtown10567@cluster0.gg0gdie.mongodb.net/?retryWrites=true&w=majority
+
+
+
+**ERRORS AT**
+line 34 : Restaurant Layout (sol : Arrange DB)
+
+
+
+
+

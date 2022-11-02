@@ -1,20 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AiTwotoneStar } from 'react-icons/ai';
 
+// Reducx
+import { useDispatch } from 'react-redux';
+import { getImage } from '../redux/reducers/image/image.action';
+
 const RestaurantCard = (props) => {
   const [image, setImage] = useState({
-    images : [
-      {
-      location: "https://www.eatthis.com/wp-content/uploads/sites/4/2019/06/deep-dish-pizza-chicago.jpg"
-      }
-    ]
+    images: [],
+  });
+  console.log(props._id);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getImage(props.photos)).then((data) => {
+      const images = data.payload.images;
+      setImage((prev) => ({ ...prev, images }));
     });
+  }, [props.photos]);
+
   return (
     <Link
       to={`/restaurant/${props._id}/overview`}
       // className='w-full md:w-1/2 lg:w-1/3'
-      >
+    >
       <div className='bg-white p-4 w-full rounded-2xl transition duration-700 ease-in-out sm:shadow-md md:shadow-none hover:drop-shadow-lg '>
         <div className='w-full relative'>
           <div className='w-full bottom-4 flex items-end justify-between'>
@@ -40,11 +50,13 @@ const RestaurantCard = (props) => {
             <div className='flex items-center justify-between'>
               <h4 className='text-xl font-medium'>{props.name}</h4>
               <span className='bg-green-800 text-sm text-white p-1 gap-3 rounded flex items-center'>
-                {props.restaurantReviewValue} <AiTwotoneStar/>
+                {props.restaurantReviewValue} <AiTwotoneStar />
               </span>
             </div>
             <div className='flex items-center gap-10 justify-between text-gray-500'>
-              <p className='truncate w-3/4 text-ellipsis overflow-hidden'>{props.cuisine.join(', ')}</p>
+              <p className='truncate w-3/4 text-ellipsis overflow-hidden'>
+                {props.cuisine.join(', ')}
+              </p>
               <p className='w-3/4 text-right'>₹ {props.averageCost} for one</p>
             </div>
           </div>
