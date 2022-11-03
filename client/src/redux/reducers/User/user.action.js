@@ -1,6 +1,6 @@
 import axios from 'axios';
 // redux types
-import { GET_USER, AUTH_USER, SELF, CLEAR_USER } from './user.type';
+import { GET_USER, SELF, CLEAR_USER } from './user.type';
 
 export const getUser = (_id) => async (dispatch) => {
   try {
@@ -14,14 +14,13 @@ export const getUser = (_id) => async (dispatch) => {
     return dispatch({type : "ERROR GET USER", payload: error})
   }
 }
-
-export const mySelf = (_id) => async (dispatch) => {
+export const mySelf = () => async (dispatch) => {
   try {
     const User = await axios({
       method: "GET",
       url: 'http://localhost:4000/user/'
     })
-    return dispatch({type : SELF, payload: User.data.user})
+    return dispatch({type : SELF, payload: {...User.data.user}})
 
   } catch (error) {
     return dispatch({type : "ERROR GET Myself", payload: error})
@@ -31,7 +30,7 @@ export const mySelf = (_id) => async (dispatch) => {
 export const clearUser = () => async (dispatch) => {
     try {
       
-      return dispatch({type : GET_USER, payload: {}  })
+      return dispatch({type : CLEAR_USER, payload: {}  })
   
     } catch (error) {
       return dispatch({type : "ERROR CLEAR USER", payload: error})

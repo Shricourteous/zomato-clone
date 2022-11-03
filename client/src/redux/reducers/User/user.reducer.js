@@ -1,6 +1,10 @@
-import { GET_USER, AUTH_USER, SELF, CLEAR_USER } from './user.type';
+import { GET_USER, SELF, CLEAR_USER } from './user.type';
 
-const intialState = {};
+const intialState = {
+  user:{
+
+  }
+};
 
 const userReducer = (state = intialState, action)=>{
   switch (action.type) {
@@ -15,7 +19,7 @@ const userReducer = (state = intialState, action)=>{
        }
     case CLEAR_USER:
       return {
-        
+        user:{}
       };
        
     default:

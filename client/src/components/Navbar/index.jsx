@@ -16,6 +16,8 @@ import {signOut} from  '../../redux/reducers/auth/auth.action'
 
 const MobNavbar = ({ user, isDropDownOpen, setIsDropDownOpen, signIn, signUp }) => {
   
+  // console.log("user : ", user)
+
   const SignIn =()=>{
     signIn()
     setIsDropDownOpen(false)
@@ -48,7 +50,7 @@ const MobNavbar = ({ user, isDropDownOpen, setIsDropDownOpen, signIn, signUp }) 
         <button className="bg-zomato-400 text-white px-3 py-2 rounded-full">
           Use App
         </button>
-        {user?.fullname ? (
+        {user?.email ? (
           <>
             <div
               onClick={() => setIsDropDownOpen((prev) => !prev)}
@@ -141,7 +143,7 @@ const LargeNav = ({ user, isDropDownOpen, setIsDropDownOpen, signIn,signUp }) =>
         </div>
       </div>
       <div className="flex items-center gap-3 relative">
-        {user?.fullname ? (
+        {user?.email ? (
           <>
             <div
               onClick={() => setIsDropDownOpen((prev) => !prev)}
@@ -195,8 +197,8 @@ const Navbar = () => {
   // };
 
   // redux
-  const user =  useSelector((globalState ) => globalState.user)
-  
+  const user =  useSelector((globalState) => globalState.user)
+
 
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   return (

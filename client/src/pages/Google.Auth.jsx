@@ -1,12 +1,11 @@
-import React from 'react'
+import React , { useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
 
 
 import {useDispatch } from 'react-redux'
 import { googleAuth } from '../redux/reducers/auth/auth.action'
 
-const Google = () => {
+const GoogleAuth = () => {
   const {token} = useParams()
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -24,4 +23,4 @@ const Google = () => {
   )
 }
 
-export default Google;
+export default GoogleAuth;

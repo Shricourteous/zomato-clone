@@ -57,7 +57,7 @@ export const signOut = () => async (dispatch) =>{
 }
 
 // save the user DAta from google AUth
-export const googleAuth = (token) => (dispatch) => {
+export const googleAuth = (token) => async(dispatch) => {
   try {
     localStorage.setItem("zomatoUser", JSON.stringify({ token }));
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;    
