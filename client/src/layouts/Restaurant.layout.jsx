@@ -26,8 +26,39 @@ const RestaurantLayout = ({ children: Component, ...props }) => {
     address: '',
     restaurantRating: 4.1,
     deliveryRating: 3.2,
+
+// images : [
+//   {
+//     location:
+//       "https://b.zmtcdn.com/data/pictures/chains/8/301718/9386449fd71cc10c9b1007469be4fe10.jpg",
+//   },
+//   {
+//     location:
+//       "https://b.zmtcdn.com/data/pictures/chains/8/301718/521b89e0710553cee262e5f0b13efb23.jpg",
+//   },
+//   {
+//     location:
+//       "https://b.zmtcdn.com/data/pictures/5/18216915/1cd1d09c0a137b5d8da7a7f7310cd919.jpg",
+//   },
+//   {
+//     location:
+//       "https://b.zmtcdn.com/data/pictures/chains/8/301718/521b89e0710553cee262e5f0b13efb23.jpg",
+//   },
+//   {
+//     location:
+//       "https://b.zmtcdn.com/data/pictures/5/18216915/1cd1d09c0a137b5d8da7a7f7310cd919.jpg",
+//   },
+// ],
+// name: "Biryani Blues",
+// cuisine: ["Biryani", "Kebab", "Desserts"],
+// address: "Connaught Place, New Delhi",
+// restaurantRating: 4.1,
+// deliveryRating: 3.2,
+
   });
 
+
+  
   const dispatch = useDispatch();
   const { id } = useParams();
   
@@ -35,12 +66,12 @@ const RestaurantLayout = ({ children: Component, ...props }) => {
     dispatch(getSpecificRestaurant(id)).then((data) => {
       setrestaurant((prev) => ({
         ...prev,
-        ...data.payload.restaurant,
+        ...data.payload.restaurant[0],
       }));
-      // console.log("data:  \n", data)
+      console.log("data:  \n", data.payload.restaurant[0])
       // console.log("Id:  \n", )
 
-      dispatch(getImage(data.payload.restaurant.photos)).then((data) => {
+      dispatch(getImage(data.payload.restaurant[0].photos)).then((data) => {
         setrestaurant((prev) => ({
           ...prev,
           images: data.payload.images,
@@ -53,6 +84,7 @@ const RestaurantLayout = ({ children: Component, ...props }) => {
     <>
       <Navbar />
       <div className='container mx-auto px-4 mt-8 lg:px-20 pb-20'>
+        {console.log('restaurant: ', restaurant)}
         <ImageGrid images={restaurant.images} />
         <RestaurantInfo {...restaurant} />
         <div className='my-4 flex flex-wrap gap-3 mx-auto'>

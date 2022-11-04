@@ -20,6 +20,8 @@ const RestaurantCard = (props) => {
     });
   }, [props.photos]);
 
+  console.log("image  : ", image.images)
+
   return (
     <Link
       to={`/restaurant/${props._id}/overview`}
@@ -42,7 +44,7 @@ const RestaurantCard = (props) => {
             </div>
             <img
               src={image.images.length && image.images[0].location}
-              alt='food'
+              alt='foodss'
               className='w-full h-full rounded-2xl'
             />
           </div>

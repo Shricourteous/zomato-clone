@@ -1,0 +1,20 @@
+[
+  {
+    location:"https://s3-us-west-2.amazonaws.com/uw-s3-cdn/wp-content/uploads/sites/6/2017/11/04133712/waterfall.jpg",
+  },
+  {
+    location:"https://shapeai-zomato-abcd.s3.ap-south-1.amazonaws.com/mongoDb%20Aggregation.png",
+  },
+  {
+    location:
+      "https://shapeai-zomato-abcd.s3.ap-south-1.amazonaws.com/mongoDb%20Aggregation.png",
+  },
+  {
+    location:
+      "https://shapeai-zomato-abcd.s3.ap-south-1.amazonaws.com/mongoDb%20Aggregation.png",
+  },
+  {
+    location:
+      "https://shapeai-zomato-abcd.s3.ap-south-1.amazonaws.com/mongoDb%20Aggregation.png",
+  },
+];
