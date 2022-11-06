@@ -14,9 +14,9 @@ const AddReviewCard = () => {
   }
 
   const openModel =()=>{
-  //  if(!localStorage.zomatoUser){
-  //   alert("Sign In to post a review");
-  //  }
+   if(!localStorage.zomatoUser){
+    return alert("Sign In to post a review");
+   }
    setisOpen(true) 
   }
 

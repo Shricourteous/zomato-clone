@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TiStarOutline } from 'react-icons/ti';
 import { RiDirectionLine, RiShareForwardLine } from 'react-icons/ri';
 import { BiBookmarkPlus } from 'react-icons/bi';
@@ -16,7 +16,6 @@ import CartContainer from '../components/Cart/CartContainer.jsx';
 import { useDispatch } from 'react-redux';
 import { getSpecificRestaurant } from '../redux/reducers/restaurant/restaurant.action';
 import { getImage } from '../redux/reducers/image/image.action';
-import { useEffect } from 'react';
 
 const RestaurantLayout = ({ children: Component, ...props }) => {
   const [restaurant, setrestaurant] = useState({
@@ -68,9 +67,7 @@ const RestaurantLayout = ({ children: Component, ...props }) => {
         ...prev,
         ...data.payload.restaurant[0],
       }));
-      console.log("data:  \n", data.payload.restaurant[0])
       // console.log("Id:  \n", )
-
       dispatch(getImage(data.payload.restaurant[0].photos)).then((data) => {
         setrestaurant((prev) => ({
           ...prev,
@@ -78,13 +75,15 @@ const RestaurantLayout = ({ children: Component, ...props }) => {
         }));
       });
     });
+    // console.log("data:  \n", data.payload.restaurant[0])
   }, []);
+  console.log('restaurant: ', restaurant)
 
   return (
     <>
       <Navbar />
       <div className='container mx-auto px-4 mt-8 lg:px-20 pb-20'>
-        {console.log('restaurant: ', restaurant)}
+        
         <ImageGrid images={restaurant.images} />
         <RestaurantInfo {...restaurant} />
         <div className='my-4 flex flex-wrap gap-3 mx-auto'>
