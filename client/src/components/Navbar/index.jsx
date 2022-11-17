@@ -7,7 +7,7 @@ import { RiSearch2Line } from "react-icons/ri";
 // Components
 import SignIn from '../Auth/SignIn'
 import SignUp from "../Auth/SignUp";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // redux
 import { useSelector, useDispatch } from "react-redux";
@@ -40,11 +40,13 @@ const MobNavbar = ({ user, isDropDownOpen, setIsDropDownOpen, signIn, signUp }) 
   return (
     <div className="w-full flex items-center justify-between lg:hidden">
       <div className="w-28">
+        <Link to="/">
         <img
           src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png"
           alt="Logo"
           className="w-full h-full"
-        />
+          />
+        </Link>
       </div>
       <div className="flex items-center gap-3 relative">
         <button className="bg-zomato-400 text-white px-3 py-2 rounded-full">
@@ -57,7 +59,7 @@ const MobNavbar = ({ user, isDropDownOpen, setIsDropDownOpen, signIn, signUp }) 
               className="border border-gray-300 text-zomato-400 h-9 w-9 rounded-full"
             >
               <img
-                src="https://banner2.cleanpng.com/20180920/yko/kisspng-computer-icons-portable-network-graphics-avatar-ic-5ba3c66df14d32.3051789815374598219884.jpg"
+                src="/images/avatar.jpg"
                 alt="avatar"
                 className="w-full h-full object-cover rounded-full"
               />
@@ -115,10 +117,12 @@ const LargeNav = ({ user, isDropDownOpen, setIsDropDownOpen, signIn,signUp }) =>
     <div className="w-full items-center justify-between m-auto px-20 lg:flex hidden container mx-auto ">
       <div className="gap-4 justify-around w-full items-center flex">
         <div className="w-20">
+          <Link to= "/">
           <img
             src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png"
             alt="Logo"
           />
+          </Link>
         </div>
         <div className="w-3/4 bg-white shadow-md p-3 flex items-center gap-3 border border-gray-200 rounded">
           <div className="flex pr-2 items-center border-r-2 gap-2 border-gray-200">

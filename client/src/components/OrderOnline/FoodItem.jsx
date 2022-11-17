@@ -20,10 +20,10 @@ const FoodItem = (props) => {
   useEffect(()=>{
     dispatch(getFood(props._id)).then((data)=>{
       setfoodItem(data.payload.foods);
-      console.log(data.payload)
+      // console.log(data.payload)
       dispatch(getImage(data.payload.foods.photos)).then((data)=>{
         const {images} = data.payload;
-        console.log(images[0].location)
+        // console.log(images[0].location)
         images.length && setfoodItem((prev)=> ({...prev, image: images[0].location}))
       })
       return data.payload.foods

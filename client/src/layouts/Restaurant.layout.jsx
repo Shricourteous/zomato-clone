@@ -65,10 +65,10 @@ const RestaurantLayout = ({ children: Component, ...props }) => {
     dispatch(getSpecificRestaurant(id)).then((data) => {
       setrestaurant((prev) => ({
         ...prev,
-        ...data.payload.restaurant[0],
+        ...data.payload.restaurant,
       }));
       // console.log("Id:  \n", )
-      dispatch(getImage(data.payload.restaurant[0].photos)).then((data) => {
+      dispatch(getImage(data.payload.restaurant.photos)).then((data) => {
         setrestaurant((prev) => ({
           ...prev,
           images: data.payload.images,

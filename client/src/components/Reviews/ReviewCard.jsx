@@ -15,7 +15,7 @@ const ReviewCard = (props) => {
         <div className='flex items-center gap-2'>
           <div className='w-10 h-10 rounded-full'>
             <img
-              src='https://banner2.cleanpng.com/20180920/yko/kisspng-computer-icons-portable-network-graphics-avatar-ic-5ba3c66df14d32.3051789815374598219884.jpg'
+              src='/images/avatar.jpg'
               alt='Avater'
               className='w-full h-full rounded object-cover'
             />

@@ -26,15 +26,16 @@ const OrderOnline = () => {
 
   const dispatch = useDispatch();
 
-  const restaurant = useSelector(globaldata => globaldata.restaurant.selectedRestaurant.restaurant[0] )
+  const restaurant = useSelector(globaldata => globaldata.restaurant.selectedRestaurant.restaurant)
 
-console.log(restaurant.menu)
+// console.log(restaurant[0])
+// console.log(restaurant)
 
   useEffect(() => { 
+    console.log("restaurant menu ========>\n", restaurant)
     restaurant &&
     dispatch(getFoodList(restaurant.menu)).then((data)=>{
       setMenu(data.payload.menus.menus)
-      console.log(data.payload.menus.menus)
     })
   }, [restaurant])
   

@@ -6,7 +6,7 @@ import {useParams} from 'react-router-dom'
 const MenuCategory = (props) => {
   
   const {id} = useParams();
-  console.log("props:  \n", props)
+  // console.log("props:  \n", props)
   return (
     <>
       <a

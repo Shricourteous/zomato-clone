@@ -10,7 +10,7 @@ const RestaurantCard = (props) => {
   const [image, setImage] = useState({
     images: [],
   });
-  console.log(props._id);
+  // console.log(props._id);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const RestaurantCard = (props) => {
     });
   }, [props.photos]);
 
-  console.log("image  : ", image.images)
+  // console.log("image  : ", image.images)
 
   return (
     <Link

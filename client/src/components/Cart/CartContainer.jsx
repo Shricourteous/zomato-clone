@@ -1,38 +1,42 @@
 import React,{useState} from 'react'
-import {IoMdArrowDropdown, IoMdArrowDropright, IoMdArrowDropup} from 'react-icons/io'
+import { IoMdArrowDropright, IoMdArrowDropup} from 'react-icons/io'
 import {IoCloseSharp} from 'react-icons/io5'
 import {useNavigate} from 'react-router-dom'
 
-// import React, { useState } from "react"; {DEVTOW}
-// import { IoMdArrowFropdown, IoCloseSharp } from "react-icons/io5";
-// import { IoMdArrowDropup, IoMdArrowDropright } from "react-icons/io";
-// import { useNavigate } from "react-router-dom";
- 
 // Components
 import FoodItem from './FoodItem'
 
+// Redux
+import { useSelector } from 'react-redux'
+
+
 const CartData =({toggle})=>{
-  const [cart, setcart] = useState([
-    
-    {
-      image: 'https://b.zmtcdn.com/data/dish_photos/af1/fd1b012ebfbe82f2e5212b702ce19af1.jpg',
-      name: 'Butter Pancakes with Bacon',
-      rating: 4.5,
-      price: 100,
-      quantity : 2,
-      totalPrice: 200,
-      description: 'Rashers and bourbon caramel sauce.',
-    },
-    {
-      image: 'https://b.zmtcdn.com/data/dish_photos/077/28e7baadea310b7b337fd2fb3f653077.jpg',
-      name: 'Amritsari Fish Tikka',
-      rating: 5,
-      price: 200,
-      quantity : 3,
-      totalPrice: 600,
-      description: 'Fish marinated in flavourful lemon-chilli masala roasted in the tandoor with care. Serves 2-3 people.',
-    }
-  ])
+
+  /**************************STATIC CODE***************************/ 
+  // const [cart, setcart] = useState([
+  //   {
+  //     image: 'https://b.zmtcdn.com/data/dish_photos/af1/fd1b012ebfbe82f2e5212b702ce19af1.jpg',
+  //     name: 'Butter Pancakes with Bacon',
+  //     rating: 4.5,
+  //     price: 100,
+  //     quantity : 2,
+  //     totalPrice: 200,
+  //     description: 'Rashers and bourbon caramel sauce.',
+  //   },
+  //   {
+  //     image: 'https://b.zmtcdn.com/data/dish_photos/077/28e7baadea310b7b337fd2fb3f653077.jpg',
+  //     name: 'Amritsari Fish Tikka',
+  //     rating: 5,
+  //     price: 200,
+  //     quantity : 3,
+  //     totalPrice: 600,
+  //     description: 'Fish marinated in flavourful lemon-chilli masala roasted in the tandoor with care. Serves 2-3 people.',
+  //   }
+  // ])
+
+  
+  // redux   
+  const cart = useSelector((globalState)=> globalState.cart.cart);
   const navigate= useNavigate();
   const countinueToCheckout = ()=> navigate("/checkout/orders");
   
@@ -59,29 +63,30 @@ const CartData =({toggle})=>{
 }
 
 const CartContainer = () => {
-  const [isOpen, setisOpen] = useState(true)
+  const [isOpen, setisOpen] = useState(false)
 
-  const [cart, setcart] = useState([
-    
-    {
-      image: "https://b.zmtcdn.com/data/dish_photos/af1/fd1b012ebfbe82f2e5212b702ce19af1.jpg",
-      name: "Butter Pancakes with Bacon",
-      rating: 4.5,
-      price: 200,
-      description: "Rashers and bourbon caramel sauce.",
-      quantity: 3,
-      totalPrice: 600,
-    },
-    {
-      image: "https://b.zmtcdn.com/data/dish_photos/077/28e7baadea310b7b337fd2fb3f653077.jpg",
-      name: "Amritsari Fish Tikka",
-      rating: 5,
-      price: 250,
-      quantity: 1,
-      totalPrice: 250,
-      description: "Fish marinated in flavourful lemon-chilli masala roasted in the tandoor with care. Serves 2-3 people.",
-    },
-  ])
+  // const [cart, setcart] = useState([
+  //   {
+  //     image: "https://b.zmtcdn.com/data/dish_photos/af1/fd1b012ebfbe82f2e5212b702ce19af1.jpg",
+  //     name: "Butter Pancakes with Bacon",
+  //     rating: 4.5,
+  //     price: 200,
+  //     description: "Rashers and bourbon caramel sauce.",
+  //     quantity: 3,
+  //     totalPrice: 600,
+  //   },
+  //   {
+  //     image: "https://b.zmtcdn.com/data/dish_photos/077/28e7baadea310b7b337fd2fb3f653077.jpg",
+  //     name: "Amritsari Fish Tikka",
+  //     rating: 5,
+  //     price: 250,
+  //     quantity: 1,
+  //     totalPrice: 250,
+  //     description: "Fish marinated in flavourful lemon-chilli masala roasted in the tandoor with care. Serves 2-3 people.",
+  //   },
+  // ])
+  const cart = useSelector((globalState)=> globalState.cart.cart);
+ 
   const toggleCart = ()=> setisOpen((prev)=>!prev)
   const closeCart= ()=> setisOpen(false)
   return(

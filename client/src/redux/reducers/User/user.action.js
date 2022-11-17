@@ -6,7 +6,7 @@ export const getUser = (_id) => async (dispatch) => {
   try {
     const User = await axios({
       method: "GET",
-      url : `http://localhost:4000/user/${_id}`    
+      url : `${process.env.REACT_APP_CLIENT_URL}user/${_id}`    
     })
     return dispatch({type : GET_USER, payload: User.data})
     

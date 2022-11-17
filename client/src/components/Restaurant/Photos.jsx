@@ -28,12 +28,12 @@ const Photos = () => {
   const  reduxState = useSelector((globalState)=> globalState.restaurant.selectedRestaurant.restaurant)
 
   useEffect(()=>{
-    console.log("====================USEEEFFECT=================")
+    // console.log("====================USEEEFFECT=================")
     if(reduxState){
       dispatch(getImage(reduxState[0]?.photos)).then((data)=>{
         const images = []
         data.payload.images.map(({location}) => images.push(location))
-        console.log("Images: ", images)
+        // console.log("Images: ", images)
         setphotos(images);
       })
     }

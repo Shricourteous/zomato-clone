@@ -1,12 +1,22 @@
 import React from 'react'
 import {BsTrashFill} from 'react-icons/bs'
 
+// reduc
+import { deleteCart, increamentQuantity, decrementQuantity } from '../../redux/reducers/cart/cart.action'
+import { useDispatch } from 'react-redux'
+
 
 
 const FoodItem = (props) => {
-  const deleteFoodFromCart = () => {}
-  const increment = () => {}
-  const decrementt = () => {}
+
+  const dispatch = useDispatch() 
+
+  const deleteFoodFromCart = () => dispatch(deleteCart(props._id))
+  const increment = () => dispatch(increamentQuantity(props._id))
+  const decrementt = () => {
+    if (props.quantity === 1) return ;
+    dispatch(decrementQuantity(props._id)) 
+  }
 
 
   return (

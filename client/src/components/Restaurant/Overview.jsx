@@ -51,35 +51,34 @@ const Overview = () => {
   const reduxState = useSelector(
     (globalState) => globalState.restaurant.selectedRestaurant.restaurant
   );
-    
   // const reduxState = reduxstate;
-
+    //no touch//////////////
   useEffect(() => {  
     if(reduxState){
-      console.log("resseting redux state..................")
-      setRestaurant(reduxState[0])
+      // console.log("resseting redux state..................")
+      setRestaurant(reduxState)
     }
   }, [reduxState]);
-  console.log("===========ReduxState ==>",reduxState)
+  // console.log("===========ReduxState ==>",reduxState)
 
   useEffect(()=>{
-    console.log("====================USEEEFFECT=================")
+    // console.log("====================USEEEFFECT=================")
     if(reduxState){
-      dispatch(getImage(reduxState[0]?.menuImages)).then((data)=>{
+      dispatch(getImage(reduxState?.menuImages)).then((data)=>{
         const images = []
         data.payload.images.map(({location}) => images.push(location))
-        console.log("Images: ", images)
+        // console.log("Images: ", images)
         setMenuImages(images);
       }) 
 
       // .then runs after successfull dispatch and var/callback (data) gets the data of sender func/reducer (say getReview)
-      dispatch(getReview(reduxState[0]?._id)).then((data) => {
+      dispatch(getReview(reduxState?._id)).then((data) => {
         setReviews(data.payload.reviews);
       });
       
     }
   }, [reduxState])
-  console.log("The Review/..............", reviews)
+  // console.log("The Review/..............", reviews)
 
 
   /*********** STATIC CODE *************/

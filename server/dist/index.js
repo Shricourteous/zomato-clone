@@ -1,47 +1,32 @@
 "use strict";
 
 var _express = _interopRequireDefault(require("express"));
-
 var _dotenv = _interopRequireDefault(require("dotenv"));
-
 var _expressSession = _interopRequireDefault(require("express-session"));
-
 var _passport = _interopRequireDefault(require("passport"));
-
 var _connection = _interopRequireDefault(require("./database/connection"));
-
 var _route = _interopRequireDefault(require("./config/route.config"));
-
 var _google = _interopRequireDefault(require("./config/google.config"));
-
 var _auth = _interopRequireDefault(require("./api/auth"));
-
 var _food = _interopRequireDefault(require("./api/food"));
-
 var _restaurant = _interopRequireDefault(require("./api/restaurant"));
-
 var _user = _interopRequireDefault(require("./api/user"));
-
 var _menu = _interopRequireDefault(require("./api/menu"));
-
 var _order = _interopRequireDefault(require("./api/order"));
-
 var _reviews = _interopRequireDefault(require("./api/reviews"));
-
 var _image = _interopRequireDefault(require("./api/image"));
-
 var _cors = _interopRequireDefault(require("cors"));
-
 var _helmet = _interopRequireDefault(require("helmet"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 // Database connection
-// Private Route Authentication
-// Importing APIs
-// Middleware to operate Redux
-_dotenv.default.config();
 
+// Private Route Authentication
+
+// Importing APIs
+
+// Middleware to operate Redux
+
+_dotenv.default.config();
 const zomato = (0, _express.default)();
 (0, _route.default)(_passport.default);
 (0, _google.default)(_passport.default);
@@ -59,8 +44,9 @@ zomato.get("/", (req, res) => {
   res.json({
     "message": "Server is running"
   });
-}); // Establishing Routes
+});
 
+// Establishing Routes
 zomato.use("/auth", _auth.default);
 zomato.use('/food', _food.default);
 zomato.use('/restaurant', _restaurant.default);

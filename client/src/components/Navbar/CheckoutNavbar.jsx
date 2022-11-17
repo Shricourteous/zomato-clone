@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import { useSelector } from "react-redux";
 import {useNavigate} from "react-router-dom"
 
 
@@ -7,9 +8,10 @@ import {useNavigate} from "react-router-dom"
 const CheckoutNavbar = () => {
 
 
-  const [user] = useState({
-    fullName : "Shricourteous"
-  });
+  const username = useSelector((globalState)=> globalState.user.fullname)
+  const user = {
+    fullName : username
+  };
   const navigate = useNavigate()
 
 
@@ -27,7 +29,7 @@ const CheckoutNavbar = () => {
           </div>
           <div className="flex items-center justify-center gap-3">
             <div className="border border-gray-400 w-10 h-10 text-zomato-400 overflow-hidden rounded-full">
-              <img src="https://banner2.cleanpng.com/20180920/yko/kisspng-computer-icons-portable-network-graphics-avatar-ic-5ba3c66df14d32.3051789815374598219884.jpg" alt="AVATAR" className="w-full h-full rounded-full object-cover" />
+              <img src="/images/avatar.jpg" alt="AVATAR" className="w-full h-full rounded-full object-cover" />
             </div>
             {user.fullName}
           </div>

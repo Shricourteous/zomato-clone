@@ -8,7 +8,7 @@ export const getRestaurant = () => async (dispatch) => {
   try {
     const restaurant_list = await axios({
       method : "GET",
-      url : "http://localhost:4000/restaurant?city=NCR"
+      url : `${process.env.REACT_APP_CLIENT_URL}restaurant?city=NCR`
     });
     return dispatch({type: GET_RESTAURANT, payload : restaurant_list.data.restaurants})
 
@@ -22,10 +22,12 @@ export const getSpecificRestaurant = (_id) => async (dispatch) => {
   try {
     const restaurant_list = await axios({
       method : "GET",
-      url : `http://localhost:4000/restaurant/${_id}`
+      url : `${process.env.REACT_APP_CLIENT_URL}restaurant/${_id}`
     });
-    return dispatch({type: GET_SPECIFIC_RESTAURANT, payload : restaurant_list.data})
-    // console.log(restaurant_list.data)
+    const restaurant = { restaurant : restaurant_list.data.restaurant[0] }
+
+    console.log("get Spec res :: ======> ", restaurant,)
+    return dispatch({type: GET_SPECIFIC_RESTAURANT, payload : restaurant})
     // return dispatch({type: "Error reducer get spc res", payload : "Nothing"})
     
   } catch (error) {
