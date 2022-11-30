@@ -2,11 +2,9 @@
 /server/package-lock.json
 /server/dist
 /server/dist/*
-/server/Dockerfile
 /server/.env
 
 /client/package-lock.json
 /client/node_modules
 /client/.env
-/client/Dockerfile
 ###CHECK###
