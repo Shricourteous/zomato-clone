@@ -6,6 +6,6 @@ COPY package*.json ./
 
 RUN npm i --silent
 
-COPY . .
+COPY . ./
 
 CMD ["npm", "run", "dev"]
