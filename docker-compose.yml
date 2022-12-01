@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   nginx:
     restart: always
@@ -12,12 +12,12 @@ services:
       - client
   nodeserver:
     restart: always
-    build: 
-      dockerfile: Dockerfile.dev
+    build:
+      dockerfile: Dockerfile
       context: ./server
     volumes:
       - /app/node_modules
-      - server:/app
+      - ./server:/app
     environment:
       - MONGO_URL=mongodb+srv://devtown:devtown10567@cluster0.gg0gdie.mongodb.net/?retryWrites=true&w=majority
       - JWT_SECRET=ZomatoApp
@@ -28,7 +28,7 @@ services:
     ports:
       - "4000:4000"
   client:
-    build: 
+    build:
       dockerfile: Dockerfile
       context: ./client
     volumes:
